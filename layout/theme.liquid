@@ -1,0 +1,75 @@
+<!doctype html>
+<html class="no-js" lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="{{ settings.color_accent }}">
+  <link rel="canonical" href="{{ canonical_url }}">
+  <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+
+  {%- if settings.favicon != blank -%}
+    <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+  {%- endif -%}
+
+  <title>
+    {{ page_title }}{%- if current_tags -%} &ndash; {{ current_tags | join: ', ' }}{%- endif -%}
+    {%- if current_page != 1 -%} &ndash; {{ 'general.meta.page' | t: page: current_page }}{%- endif -%}
+    {%- unless page_title contains shop.name -%} &ndash; {{ shop.name }}{%- endunless -%}
+  </title>
+
+  {% if page_description %}
+    <meta name="description" content="{{ page_description | escape }}">
+  {% endif %}
+
+  {{ content_for_header }}
+
+  {% comment %}
+    Add your custom CSS files here
+  {% endcomment %}
+  {{ 'theme.css' | asset_url | stylesheet_tag }}
+
+  {% comment %}
+    Add your custom JavaScript files here
+  {% endcomment %}
+  {{ 'theme.js' | asset_url | script_tag }}
+
+  <style>
+    :root {
+      --color-background: #ffffff;
+      --color-text: #1a1a1a;
+      --color-accent: #FF3C38;
+      --color-secondary-light: #F4F4F4;
+      --color-secondary-dark: #111111;
+      --font-heading: Montserrat, sans-serif;
+      --font-body: Inter, sans-serif;
+    }
+  </style>
+</head>
+
+<body class="template-{{ request.page_type | handle }}">
+
+  <a class="skip-link screen-reader-only" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
+
+  {% section 'header' %}
+
+  <main id="MainContent" class="main-content" role="main" tabindex="-1">
+    {{ content_for_layout }}
+  </main>
+
+  {% section 'footer' %}
+
+  {% comment %}
+    Shopify's automatically added scripts
+  {% endcomment %}
+  {{ content_for_footer }}
+
+  {% comment %}
+    Custom scripts for animations and other functionalities
+  {% endcomment %}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+</body>
+</html>

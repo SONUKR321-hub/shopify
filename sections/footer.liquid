@@ -1,0 +1,23 @@
+<footer class="site-footer">
+  <div class="footer-wrapper">
+    <p>&copy; {{ 'now' | date: "%Y" }} Moxie Mart. All rights reserved.</p>
+    <div class="trust-badges">
+      <!-- Placeholder for trust badges -->
+      <img src="https://via.placeholder.com/100x30?text=Secure+Checkout" alt="Secure Checkout">
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+  {
+    "name": "Footer",
+    "settings": [
+      {
+        "type": "text",
+        "id": "footer_text",
+        "label": "Footer Text",
+        "default": "Moxie Mart"
+      }
+    ]
+  }
+{% endschema %}

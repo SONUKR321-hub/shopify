@@ -1,0 +1,32 @@
+<header class="site-header">
+  <div class="header-wrapper">
+    <div class="site-logo">
+      <a href="/">Moxie Mart</a>
+    </div>
+    <nav class="site-nav">
+      <ul class="main-menu">
+        <li><a href="/collections/all">Shop</a></li>
+        <li><a href="/pages/about-us">About Us</a></li>
+        <li><a href="/pages/contact-us">Contact Us</a></li>
+      </ul>
+    </nav>
+    <div class="header-icons">
+      <!-- Cart icon placeholder -->
+      <a href="/cart" class="cart-icon">Cart</a>
+    </div>
+  </div>
+</header>
+
+{% schema %}
+  {
+    "name": "Header",
+    "settings": [
+      {
+        "type": "text",
+        "id": "header_title",
+        "label": "Header Title",
+        "default": "Moxie Mart"
+      }
+    ]
+  }
+{% endschema %}
